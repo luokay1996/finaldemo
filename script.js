@@ -75,15 +75,22 @@ function exportToExcel() {
 
 function startScanner() {
   const html5QrCode = new Html5Qrcode("reader");
+
   Html5Qrcode.getCameras().then(devices => {
     if (devices && devices.length) {
-      const cameraId = devices[0].id;
+      // Tìm camera sau nếu có
+      const backCamera = devices.find(device =>
+        device.label.toLowerCase().includes("back")
+      ) || devices[0];
+
+      const config = {
+        fps: 10,
+        qrbox: { width: 250, height: 250 }
+      };
+
       html5QrCode.start(
-        { deviceId: { exact: cameraId } },
-        {
-          fps: 10,
-          qrbox: { width: 250, height: 250 }
-        },
+        { deviceId: { exact: backCamera.id } },
+        config,
         handleScan,
         errorMessage => {
           // console.log("Lỗi quét:", errorMessage);
