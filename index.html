@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quét QR & Xuất Excel</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+  <h1>📷 Quét mã QR & Lưu Excel</h1>
+
+  <div id="reader" style="width: 300px; margin: auto;"></div>
+
+  <label><input type="checkbox" id="strict-mode" checked /> Lọc trùng nâng cao</label><br>
+  <label><input type="checkbox" id="beep-toggle" checked /> Bật tiếng beep khi quét</label><br>
+
+  <button id="start-btn">🔍 Bắt đầu quét</button>
+  <button id="toggle-scan-btn">⚪ Quét liên tục: TẮT</button>
+  <button id="flash-btn">🔦 Bật đèn flash</button>
+  <button id="export-btn">📥 Xuất Excel</button>
+  <button id="history-btn">🗂 Xem lịch sử</button>
+
+  <p>🧮 Đã quét: <span id="counter">0</span> mã</p>
+
+  <ul id="results"></ul>
+
+  <div>
+    <h3>🕒 Các phiên đã lưu:</h3>
+    <ul id="history-list"></ul>
+  </div>
+
+  <footer><p>&copy; QR Ngọc Tín by LĐAK</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
